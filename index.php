@@ -1,120 +1,94 @@
+<?php
+include("login.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset='utf-8' />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mantra</title>
+    <title>Secret Diary</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="css/fullcalendar.min.css"> -->
-    <!-- <link rel="stylesheet" href="css/fullcalendar.print.css"> -->
+    <link href="css/style.css" rel="stylesheet">
 
-    <link href='css/fullcalendar.min.css' rel='stylesheet' />
-    <link href='css/fullcalendar.print.css' rel='stylesheet' media='print' />
-    
-    <style>
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse">
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand">Secret Diary</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <form class="navbar-form navbar-right" method="post">
+                <div class="form-group">
+                    <input type="email" name="loginemail" placeholder="Email" class="form-control" value="<?php echo addslashes($_POST['loginemail'])?>"/>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="loginpassword" placeholder="Password" class="form-control" value="<?php echo addslashes($_POST['loginpassword'])?>"/>
+                </div>
+                <button type="submit" name="submit" value="Login" class="btn btn-success">Log In </button>
+            </form>
+        </div>
+    </div>
+</div>
 
-      body {
-        margin: 40px 10px;
-        padding: 0;
-        font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
-        font-size: 14px;
-      }
+<div class="container contentContainer" id="topContainer">
+    <div class="row">
 
-      #calendar {
-        max-width: 900px;
-        margin: 0 auto;
-      }
+        <div class="col-md-6 col-md-offset-3" id="topRow">
 
-    </style>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
+            <h1 class="marginTop">Project Mantra</h1>
 
-    <div id='calendar'></div>
+            <p class="lead">Schedule Calendar Social Other Cool Words, Mehul fix this later</p>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src='js/moment.min.js'></script>
-    <!-- <script src='js/jquery.min.js'></script> -->
-    <script src='js/fullcalendar.min.js'></script>
-    <script>
 
-      $(document).ready(function() {
-        
-        $('#calendar').fullCalendar({
-          header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-          },
-          defaultDate: '2015-02-12',
-          editable: true,
-          eventLimit: true, // allow "more" link when too many events
-          events: [
+            <?php
+            if($error)
             {
-              title: 'All Day Event',
-              start: '2015-02-01'
-            },
-            {
-              title: 'Long Event',
-              start: '2015-02-07',
-              end: '2015-02-10'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2015-02-09T16:00:00'
-            },
-            {
-              id: 999,
-              title: 'Repeating Event',
-              start: '2015-02-16T16:00:00'
-            },
-            {
-              title: 'Conference',
-              start: '2015-02-11',
-              end: '2015-02-13'
-            },
-            {
-              title: 'Meeting',
-              start: '2015-02-12T10:30:00',
-              end: '2015-02-12T12:30:00'
-            },
-            {
-              title: 'Lunch',
-              start: '2015-02-12T12:00:00'
-            },
-            {
-              title: 'Meeting',
-              start: '2015-02-12T14:30:00'
-            },
-            {
-              title: 'Happy Hour',
-              start: '2015-02-12T17:30:00'
-            },
-            {
-              title: 'Dinner',
-              start: '2015-02-12T20:00:00'
-            },
-            {
-              title: 'Birthday Party',
-              start: '2015-02-13T07:00:00'
-            },
-            {
-              title: 'Click for Google',
-              url: 'http://google.com/',
-              start: '2015-02-28'
+                echo '<div class="alert alert-danger">'.addslashes($error).'</div>';
             }
-          ]
-        });
-        
-      });
+            if($message)
+            {
+                echo '<div class="alert alert-success">'.addslashes($message).'</div>';
+            }
+            ?>
 
-    </script>
-  </body>
+
+            <p class="bold marginTop">Interested? Sign Up Below!</p>
+
+            <form class="marginTop" method="post">
+
+                <div class="form-group">
+
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" class="form-control" placeholder="Your email" value="<?php echo addslashes($_POST['email']) ?>"/>
+
+                </div>
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo addslashes($_POST['password']) ?>"/>
+
+                </div>
+                <input type="submit" name="submit" value="Sign Up" class="btn btn-success btn-lg marginTop" />
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/script.js"></script>
+</body>
 </html>
