@@ -59,7 +59,7 @@ if($_POST['submit'] == "Sign Up")
 
             print_r($_SESSION);
 
-            header("Location:mainpage.php");
+            header("Location: ../mantra/calendar/index.php");
         }
     }
 }
@@ -76,7 +76,7 @@ if($_POST['submit'] == "Login")
     {
         $_SESSION['id'] = $row['id'];
 
-        header("Location:mainpage.php");
+        header("Location: ../mantra/calendar/index.php");
     }
     else
     {
